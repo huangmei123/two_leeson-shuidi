@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generateor</title>
+</head>
+<body>
+    <script>
+        
+        function foo(){  //普通函数
+            // return 'foo';
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(123);
+                },2000)
+            })
+        }
+        function * test(){ //generateor函数 
+            console.log('start')
+            //必须有next 才能执行 
+            //执行后 会有一个value值 它后面就是yield后面的foo(),2...
+            // yield后面可以写任何 函数 字符 数字
+          let a = yield foo();
+          //a的值 可以通过next方法 传递
+          
+          console.log('a',a);
+          let b = yield 2;
+          console.log('b',b);
+          console.log('end')
+        }
+        let g =test();
+        //next传递的参数是上一个yield的返回值
+        console.log(g.next());
+        console.log(g.next('A value'));
+        console.log(g.next('B Value'));
+        while(!g.next().done){
+            g.next();
+        }
+
+
+        //协程
+        // 将generator函数一次性执行完
+        function generateAutoRun(gen) {
+            let g = gen();
+            function next(value) {
+                //value 拿到上一个yield后面的值
+                let res = g.next(value);
+                if (res.done) return;
+                next(res.value);
+            }
+            next();
+        }
+        generateAutoRun(test);
+
+        
+    </script>
+</body>
+</html>
