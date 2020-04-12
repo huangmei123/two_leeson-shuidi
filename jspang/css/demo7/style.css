@@ -1,0 +1,15 @@
+.ling{
+    width: 200px;
+    height: 200px;
+    background-color: #6a6;
+    margin: 100px auto;
+    /*顺时针 但是这样要考虑浏览器的兼容性，所以要加前缀*/
+    transform: rotate(45deg);
+}
+.ping{
+    width: 200px;
+    height: 100px;
+    background-color: #6a6;
+    margin: 100px auto;
+    transform: skew(20deg);
+}

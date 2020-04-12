@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结构伪类选择器</title>
+    <style type="text/css">
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    /*清除浮动*/
+    .clearfix{
+        clear:both;
+        overflow: auto;
+    }
+    .demo{
+        border: 1px solid #ccc;
+        width: 300px;
+        margin: 100px auto;
+        padding: 10px;
+    }
+    .demo li{
+        float: left;
+        list-style: none;/*链接前面的点*/
+    }
+    .demo li:first-child{
+        background-color: #0f0;
+    }
+    </style>
+</head>
+<body>
+    <div class="demo" class="clearfix">
+        <ul class="clearfix">
+            <li><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+            <li><a href="">6</a></li>
+            <li><a href="">7</a></li>
+            <li><a href="">8</a></li>
+            <li><a href="">9</a></li>
+            <li><a href="">10</a></li>
+        </ul>
+    </div>
+</body>
+</html>

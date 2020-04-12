@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素</title>
+    <style type="text/css">
+    .demo{
+        border: 1px solid #ccc;
+        width: 300px;
+        margin: 50px auto;
+        padding: 10px;
+    }
+    /*首字变大 下沉*/
+    .demo::first-letter{
+        font-size: 40px;
+        font-weight: bold;
+        float: left;
+    }
+    .demo::first-line{
+        color: salmon;
+    }
+    .demo1::before{
+        /* 必须要有content属性 可以为空 */
+        content:url('')
+    }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        CSS伪元素是用来添加一些选择器的特殊效果。
+        : first-letter : 用于向文本的首字母设置特殊样式：
+        : first-line : 用于向文本的首行设置特殊样式。
+        : before : 可以在元素的内容前面插入新内容
+        : after : 可以在元素的内容之后插入新内容。
+    </div>
+    <!-- 再html里只需负责框架，将css部分交于style -->
+    <div class="demo1">
+
+    </div>
+</body>
+</html>
