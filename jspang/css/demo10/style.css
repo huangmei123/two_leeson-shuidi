@@ -1,0 +1,38 @@
+#heart{
+    width: 100px;
+    height: 90px;
+    position: relative;
+    margin: 100px auto;
+    /* background-color: plum; */
+
+}
+/*旋转要定义一个点*/
+#heart::before{
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background-color: purple;
+    border-radius: 50px 40px 0px 0px ;
+    transform-origin: 0 100%;
+    transform:rotate(-45deg);
+    left: 50px;
+}
+#heart::after{
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background-color: purple;
+    border-radius: 50px 40px 0px 0px ;
+    transform-origin: 100% 100%;
+    transform:rotate(45deg);
+    
+}
+#egg{
+    width: 126px;
+    height: 180px;
+    background-color: #FA3;
+    margin: 100px auto;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}

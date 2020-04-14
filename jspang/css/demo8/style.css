@@ -1,8 +1,33 @@
-.zheng{
-    width: 0;
-    height: 0;
-    border-top: 50px solid plum;
-    border-left: 50px solid olivedrab;
-    border-right: 50px solid purple;
-    border-bottom: 50px solid palevioletred;
+#start{
+  width: 0px;
+  height: 0px;
+  border-bottom: 70px solid red;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  margin: 150px auto;
+  transform: rotate(35deg);
+}
+#start::before{
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-bottom: 80px solid red;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    position: absolute;
+    transform: rotate(-35deg);
+    top: -45px;
+    left: -65px;
+}
+#start::after{
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-bottom: 70px solid red;
+    border-left: 100px solid transparent; /*钝角*/
+    border-right: 100px solid transparent;
+    position: absolute;
+    transform: rotate(-70deg);
+    top: 3px;
+    left: -105px;
 }
