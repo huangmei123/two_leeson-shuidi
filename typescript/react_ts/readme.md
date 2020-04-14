@@ -16,3 +16,10 @@ entry 从某个文件require import webpack __require__
 entry 可以有多个打包的入口吗？为什么？
 vender -库
 提升了编译速度 同时保障及改善了用户的浏览体验。
+6. tsx在工作流中是如何完成编译支持的？
+resolve.extendsions tsx ->module,test .tsx? ->
+awesome-typescript-loader->tsconfig.json jsx ->react
+->babel
+jSX 良好的表现template语法
+- dist 目录下删除再生成？ 历史版本都留下 利于回滚代码
+
