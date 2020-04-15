@@ -1,5 +1,5 @@
 import React,{Component,Fragment} from 'react'
-
+import LittersisterItem from './LittersisterItem'
 class Littersister extends Component{
     constructor(props){
         super(props)//调用父类的构造函数，固定写法
@@ -22,7 +22,13 @@ class Littersister extends Component{
                 <ul>
                    {
                        this.state.list.map((item,index) =>{
-                       return <li key={index+item}>{item}</li>
+                        // 删除选项，添加点击事件 增加方法，并得到下标index
+                       return (
+                      
+                       <div>
+                           <LittersisterItem/>
+                       </div>
+                       )
                        })
                    }
                 </ul>
@@ -41,6 +47,18 @@ class Littersister extends Component{
         this.setState({
             list:[...this.state.list,this.state.inputValue],
             inputValue:''
+        })
+    }
+
+    //删除列表项,
+    deleteItem(index){
+        console.log(index);
+        let list =this.state.list
+        //删除 删除索引项一位
+        list.splice(index,1)
+        //更新删除后的列表
+        this.setState({
+            list:list
         })
     }
 }
