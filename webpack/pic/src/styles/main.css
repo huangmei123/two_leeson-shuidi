@@ -1,0 +1,9 @@
+html,body{
+  height: 100%;
+}
+body {
+    text-align: center;
+    background: url("../imgs/dlam.jpg");
+
+    /* background-color: #fff; */
+  }
