@@ -23,11 +23,14 @@ class Littersister extends Component{
                    {
                        this.state.list.map((item,index) =>{
                         // 删除选项，添加点击事件 增加方法，并得到下标index
-                       return (
-                      
-                       <div>
-                           <LittersisterItem/>
-                       </div>
+                       return (                      
+                           <LittersisterItem
+                           key={index+item}
+                           content={item}
+                           index={index}
+                           deleteItem={this.deleteItem.bind(this)}
+                           />
+   
                        )
                        })
                    }
