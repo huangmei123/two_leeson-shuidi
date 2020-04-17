@@ -16,10 +16,16 @@ class Littersister extends Component{
                 {/* this.state.inputValue 此时把inputValue赋予给一个jspang */}
                 {/* 此时我们已经再文本框中输入值，但是无变化，因为是强制绑定了inputValue值，
                 要想改变就要绑定响应事件，去改变inputValue值。 */}
-                     <input value={this.state.inputValue} onChange={this.inputChange.bind(this)} />
+                     <input 
+                     id="jspang" 
+                     className="input" 
+                     value={this.state.inputValue} 
+                     onChange={this.inputChange.bind(this)}
+                     ref={(input)=>{this.input=input}}
+                     />
                     <button onClick={this.addList.bind(this)}>增加服务</button>
                 </div>
-                <ul>
+                <ul ref={(ul)=>{this.ul=ul}}>
                    {
                        this.state.list.map((item,index) =>{
                         // 删除选项，添加点击事件 增加方法，并得到下标index
@@ -28,6 +34,7 @@ class Littersister extends Component{
                            key={index+item}
                            content={item}
                            index={index}
+                           avename='abc'
                            deleteItem={this.deleteItem.bind(this)}
                            />
    
@@ -42,7 +49,7 @@ class Littersister extends Component{
         // console.log(e.target.value);
         // this.state.inputValue=e.target.value;
         this.setState({
-            inputValue:e.target.value
+            inputValue:this.input.value
         })
     }
     //增加列表
@@ -50,6 +57,8 @@ class Littersister extends Component{
         this.setState({
             list:[...this.state.list,this.state.inputValue],
             inputValue:''
+        },() =>{
+            console.log(this.ul.querySelectorAll('div').length)
         })
     }
 

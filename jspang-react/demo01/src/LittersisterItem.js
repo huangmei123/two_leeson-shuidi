@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 class LittersisterItem
  extends Component {
     state = {  }
@@ -8,7 +9,9 @@ class LittersisterItem
     }
     render() { 
         return ( 
-            <div onClick={this.handleClick}>{this.props.content}</div>
+            <div onClick={this.handleClick}>
+                {this.props.avename}为你服务-{this.props.content}
+            </div>
          );
     }
     handleClick(){
@@ -22,6 +25,16 @@ class LittersisterItem
             list:list
         })
     }
+}
+
+LittersisterItem.propTypes={
+    content:PropTypes.string,
+    deleteItem:PropTypes.func,
+    index:PropTypes.number,
+    avename:PropTypes.string.isRequired
+}
+LittersisterItem.defaultProps={
+    avename:'aaa'
 }
  
 export default LittersisterItem;
