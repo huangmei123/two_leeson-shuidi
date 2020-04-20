@@ -1,5 +1,6 @@
 import React,{Component,Fragment} from 'react'
 import LittersisterItem from './LittersisterItem'
+import axios from 'axios'
 class Littersister extends Component{
     //在某一时刻，可以自动执行的函数
     //但此时的constructor 是es6的语法，暂时当作是生命周期函数的初始阶段
@@ -12,27 +13,45 @@ class Littersister extends Component{
         
     }
 
-    componentWillMount(){
-        console.log('------组件将要挂载到页面的时刻')
-    }
-    componentDidMount(){
-        console.log('-------组件挂载完成');
-    }
+    // componentWillMount(){
+    //     console.log('------组件将要挂载到页面的时刻')
+    // }
+    // componentDidMount(){
+    //     console.log('-------组件挂载完成');
+    // }
 
-    shouldComponentsUpdate(){
-        console.log('1-shouldComponentsUpdate')
-        return true
+    // shouldComponentsUpdate(){
+    //     console.log('1-shouldComponentsUpdate')
+    //     return true
+    // }
+    // componentWillUpdate(){
+    //     console.log('2-componentWillUpdate')
+    // }
+    // componentDidUpdate(){
+    //     console.log('4------')
+    // }
+    // //当组件从页面中删除的时候执行
+    // componentWillUnmount(){
+    //     console.log('child - componentWillUnmount')
+    // }
+
+    // shouldComponentUpdate(nextProps,nextState){
+    //     if(nextProps.content !== this.props.content){
+    //         return true
+    //     }else{
+    //         return false
+    //     }
+    
+    // }
+
+    //可以在componentDidMount生命周期函数中请求axios，在其他生命周期函数中容易出问题。
+//以掘金的一个接口为例 做一次ajax请求
+    componentDidMount(){
+        axios.post('https://web-api.juejin.im/v3/web/wbbr/bgeda')
+            .then((res)=>{console.log('axios 获取数据成功:'+JSON.stringify(res))  })
+            .catch((error)=>{console.log('axios 获取数据失败'+error)})
     }
-    componentWillUpdate(){
-        console.log('2-componentWillUpdate')
-    }
-    componentDidUpdate(){
-        console.log('4------')
-    }
-    //当组件从页面中删除的时候执行
-    componentWillUnmount(){
-        console.log('child - componentWillUnmount')
-    }
+    
     render(){
         console.log('3-render-----组件挂载中')
         return (
