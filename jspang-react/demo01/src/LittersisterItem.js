@@ -7,6 +7,12 @@ class LittersisterItem
         super(props)
         this.handleClick=this.handleClick.bind(this)
     }
+    //组件第一次存在于dom中，函数不会被执行的。
+
+    //如果已经存在于dom中，函数才会被执行
+    componentWillReceiveProps(){
+        console.log('------')
+    }
     render() { 
         return ( 
             <div onClick={this.handleClick}>
