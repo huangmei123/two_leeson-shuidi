@@ -1,0 +1,23 @@
+.ceng{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: 10px;
+    float: left;
+}
+/*
+椭圆和圆形 circle和ellipse
+从哪个方向开始 center、 top left（left top）...
+前面可以加像素： 圆形是一个像素值，椭圆是2个像素值
+多颜色的渐变，后面也可以加色标值。
+*/
+.circle{
+    background-image: radial-gradient(circle at center,pink,plum);
+    background-image: radial-gradient(circle at top left,pink,plum);
+    background-image: radial-gradient(20px circle at top left,pink,plum);
+
+}
+.ellipse{
+    background-image: radial-gradient(ellipse at center,pink,plum);
+}

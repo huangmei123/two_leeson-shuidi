@@ -1,0 +1,13 @@
+.ceng{
+    width: 260px;
+    height: 200px;
+    border: 1px solid black;
+    /*颜色的渐变，
+    角度：to top/left/right/bottom 或者是180deg...
+    可以是几种颜色
+    很多浏览器都不太支持，最好加前缀
+    */
+    background-image: linear-gradient(to left,pink 50%,plum 100%);
+    background-image: -webkit-linear-gradient(to left,pink 50%,plum 100%);
+    background-image: -o-linear-gradient(to left,pink 50%,plum 100%);
+}
