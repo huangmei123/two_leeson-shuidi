@@ -3,7 +3,7 @@ import LittersisterItem from './LittersisterItem'
 import axios from 'axios'
 import './style.css'
 import Boss from './Boss'
-
+import {CSSTransition , TransitionGroup} from 'react-transition-group'
 class Littersister extends Component{
     //在某一时刻，可以自动执行的函数
     //但此时的constructor 是es6的语法，暂时当作是生命周期函数的初始阶段
@@ -78,21 +78,31 @@ class Littersister extends Component{
                     <button onClick={this.addList.bind(this)}>增加服务</button>
                 </div>
                 <ul ref={(ul)=>{this.ul=ul}}>
-                   {
-                       this.state.list.map((item,index) =>{
-                        // 删除选项，添加点击事件 增加方法，并得到下标index
-                       return (                      
-                           <LittersisterItem
-                           key={index+item}
-                           content={item}
-                           index={index}
-                           avename='abc'
-                           deleteItem={this.deleteItem.bind(this)}
-                           />
-   
-                       )
-                       })
-                   }
+                    <TransitionGroup>
+                        {
+                            this.state.list.map((item,index) =>{
+                                // 删除选项，添加点击事件 增加方法，并得到下标index
+                            return (  
+                                <CSSTransition
+                                timeout={2000}
+                                classNames='boss-text'
+                                unmountOnExit
+                                appear={true}
+                                key={index+item}
+                                >                    
+                                    <LittersisterItem
+                                    key={index+item}
+                                    content={item}
+                                    index={index}
+                                    avename='abc'
+                                    deleteItem={this.deleteItem.bind(this)}
+                                    />
+                                </CSSTransition>
+        
+                            )
+                            })
+                        }
+                    </TransitionGroup>
                 </ul>
                 <Boss/>
             </Fragment>
