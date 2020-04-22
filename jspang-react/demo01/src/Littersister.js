@@ -3,6 +3,7 @@ import LittersisterItem from './LittersisterItem'
 import axios from 'axios'
 import './style.css'
 import Boss from './Boss'
+
 class Littersister extends Component{
     //在某一时刻，可以自动执行的函数
     //但此时的constructor 是es6的语法，暂时当作是生命周期函数的初始阶段

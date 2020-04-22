@@ -1,5 +1,6 @@
 //用css3实现react动画
 import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group'
 class Boss extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +12,15 @@ class Boss extends Component {
     render() { 
         return ( 
             <div>
-                <div className={this.state.isShow?'show':'hide'}>Boos级人物-孙悟空</div>
+                <CSSTransition
+                in={this.state.isShow}
+                timeout={2000}
+                classNames="boss-text"
+                unmountOnExit
+                >
+                    <div> Boss级人物</div>
+                </CSSTransition>
+                {/* <div className={this.state.isShow?'show':'hide'}>Boos级人物-孙悟空</div> */}
                 <div><button onClick={this.toToggole}>召唤</button></div>
             </div>
          );
