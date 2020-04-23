@@ -1,5 +1,5 @@
 # three.js
-- wegl 3D渲染 canvas （游戏，直播，电商，地图）
+- webgl 3D渲染 canvas （游戏，直播，电商，地图）
 在canvas里引入一个形状/材质 ，类似于一个camera screen
 react+three.js 组件化开发 可视化应用
 
@@ -28,3 +28,8 @@ js的语法不严格，eslint来规范，
 5. vue/react 新版本 ，在项目的时候使用 airbnb
 
 
+6. react bind this
+- bind  
+- constructor this....=this....bing(this)
+- () =>
+- autoBind babel plugin jsconfig.json

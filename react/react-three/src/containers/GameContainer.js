@@ -1,36 +1,62 @@
 import React, { Component } from 'react'
-import * as THREE from 'three' // 组件
-// THREE.js 组件
-import React3 from 'react-three-renderer'
-// three.js 更简单
+import autobind from 'autobind-decorator'
+import THREE, { Vector3 } from 'three'
+import { loadModel } from '../utils/utils'
+import Game from '../components/Game'
+
 export default class GameContainer extends Component {
-  constructor(props, context) {
-    super(props, context)
-    this.cameraPositon = new THREE.Vector3(0, 0, 5) //三维空间
+  constructor() {
+    super()
     this.state = {
+      cameraPosition: new Vector3(0, 5, 0),
+      lookAt: Vector3(0, 0, 0)
     }
+    // this.gameLoop = this.gameLoop.bind(this); 
+  }
+  // react lifeCycle mounted 
+  componentDidMount() {
+    this.mounted = true
+    window.THREE = THREE
+    // 3d 模型  设计师
+    // 有点大
+    loadModel('../../assets/sitepoint-robot.json')
+    .then(geometry => 
+      this.setState({ geometry }))
+    this.requestGameLoop()
+  }
+  requestGameLoop () {
+    // 60 fps 
+    // 1. () =》 {}
+    // 2. bind
+    // 3. 构造函数申明时bind
+    this.reqAnimId = window.requestAnimationFrame(this.gameLoop)
+  }
+  // decorator
+  @autobind
+  gameLoop () {
+    // console.log(this, '+++++++');
   }
   render() {
     const width = window.innerWidth,
       height = window.innerHeight
-    console.log(width, height)
+    // react jsx 把state 解出来
+    const {
+      cameraPosition, 
+      lookAt,
+      geometry
+    } = this.state
     return (
-      //3D渲染组件
-      <React3
-      /*主摄像头 仿照拍摄过程来写的 相机*/
-        mainCamera="camera" 
-        width={width}
-        height={height}>
-          {/* 场景 
-          perspectiveCamera就是相机，可以有多个，对应的name属性 
-          fov 角度 75度
-          aspect 拍摄的比例
-          near 近景 far远景
-          position 相机放置在this.cameraPositon
-          */}
-        <scene>
-          <perspectiveCamera 
-            name="camera"
-            fov={75}
-            aspect={width/height}
-            nea
+      <div>
+        {
+          geometry?<Game 
+            width={width}
+            height={height}
+            cameraPosition={cameraPosition}
+            lookAt={lookAt}
+            geometry={geometry}
+          />:'Loading'
+        }
+      </div>
+    )
+  }
+}
