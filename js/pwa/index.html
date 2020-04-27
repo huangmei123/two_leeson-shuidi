@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Worker</title>
+</head>
+<body>
+    <img src="./1001504.jpg" alt="">
+    <script>
+        if('serviceWorker' in navigator){
+            // 限制生效范围{scope:'./'}
+            navigator.serviceWorker.register('./sw.js',{scope:'./'})
+            .then(function(work){
+                console.log('sw 完成')
+            })
+            .catch(function(err){
+                console.log('sw 失败',err);
+            })
+        }
+    </script>
+</body>
+</html>
