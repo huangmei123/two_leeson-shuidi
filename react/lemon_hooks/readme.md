@@ -1,44 +1,53 @@
-react + ts + hooks
-理解typescript配置文件
-
-1. sourcemap
+react + ts + hooks 
+react + redux + react-router  react hooks 带来了
+很大的改变
+1. sourcemap 
 2. --inline
 3. polyfill
-4. css处理
-5. react新特性带来的fragment
-react/vue 开发 ，就是/dist目录，交给后端或者docker nginx服务代理
+4. css 处理
+5. react 新特性带来的fragment
 
-js的责任由babel
+react/vue 开发， /dist 目录，   给后端， 或自己docker nginx 服务代理
+
+js 的责任 babel  补丁
 npm i @babel/cli @babel/core  @babel/preset-env @babel/polyfill --save-dev
-https://cdn.bootcss.com/js-polyfills/0.1.42/polyfill.js
+fill 填充， poly 一些特性
+es6+    低端浏览器可以被支持的呢？ 
+三种功劳 1. babel-preset-env + babel-core 降级处理
+const let  var    () => {}  function() { }
+2. polyfill  会把一些无法降级  Promise  Array  map reduce 
+手工实现一下 垫片, 手动的添加了script src = polyfill.js 
+浏览器从不具备这个功能， 到拥有了 
+  if (typeof Object.create !== "function") { }
+  在实现polyfill 做判断， 不是要给所有的浏览器都做同样的打补丁
+  打补丁之前 先判断下浏览器是否拥有此功能？ 
+  polyfill.js  打包到 bundle.js 之中， babel  preset target
+3. plugin 
 
-## polyfill --save-dev
-fill 填充  poly一些特性
-两种功劳：1.babel-preset-env + babel-core 降级处理
-2.polyfill把一些无法降级Promise或者数组里的map方法、reduce方法，手工的实现一下，手动的添加script src = polyfill.js
-垫片 原来没有的垫上去，补全它
-在实现polfill之前做判断，不是要给所有的浏览器都做同样的补丁，
-- 在为polyfill添加之前，先判断浏览器是否拥有此功能？
-if (typeof Object.creat !=="function){}
-把polyfill.js打包到bundle.js之中， babel preset target
+inline   hot 区别   
+webpack-dev-server --mode development --inline --hot --open
+inline  hot 都是改变后 刷新内容， inline 强制刷新， 弊端是mvvm 状态会丢失
+hot  hmr hot module reload  --inline --hot  如果是hmr 部分有更新 hot  data  state 
+如果不是hmr 部分， inline 强制刷新
 
-## inline和hot区别：
-inline：表示i强制刷新，弊端是mvvm状态会丢失
-hot：是针对hmr （hot module reload）热更新，不会丢失状态
-如果是hmr 部分由更新 hot
-如果不是hmr部分，使用inline强制刷新。
+css 
+   1. style ->   .css 输出
+   MiniCssExtractPlugin 
+   2. 编译时 css 压缩
+   3. 如何调试刚刚的bug  p color
+   style-loader 开发的时候
+   定位p  color 错误， style 代码很多， 你也忘了他在那里
+   webpack 帮我们定位错处 点一下就能跳到错误的源码所在行 
 
 
-## 关于css
-1. css如何从style变成.css输出？？
- {
-        test: /\.css$/,
-        //为css压缩的独自编译做准备
-        use: [MiniCssExtractPlugin.loader,"css-loader"]
-      },
- MiniCssExtractPlugin是一个插件
-2. 编译时css要压缩
-3. 如何编译刚刚的bug（因为刚刚的color是随意定的值）
-style-loader开发的时候
-webpack帮我们定位错误 点一下就能跳到错误的源码所在行
 
+
+react 全家桶(react-router  redux ) + ts  
+1. react  全家桶比 vue 复杂   react-router-dom 
+  一切皆组件 哪怕  router  redux 
+  new Vue({
+    el:'#root',
+    router, 
+    store 
+  })
+  翻译成react 

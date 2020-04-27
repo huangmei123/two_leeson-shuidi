@@ -1,6 +1,7 @@
-body{
-    background:plum;
+body {
+  background: pink;
 }
-p{
-    color: xxxx;
+
+p {
+  color: xxxx; /*有问题*/
 }
