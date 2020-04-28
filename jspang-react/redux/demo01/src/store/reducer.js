@@ -8,5 +8,13 @@ const defaultState={
     ]
 }
 export default(state=defaultState,action) =>{
+    console.log(state,action)
+    //reducer里只能接受state，不能改变state
+    if(action.type === 'changeInput'){
+        //深度拷贝
+        let newState =JSON.parse(JSON.stringify(state))
+        newState.inputValue=action.value
+        return newState
+    }
   return state
 }
