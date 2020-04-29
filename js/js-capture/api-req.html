@@ -1,0 +1,51 @@
+<!-- api请求有没有出错 -->
+axios.get('./a')
+.then(res=>{
+    if(res.code !== 200){
+        出错了上报前端
+    }
+})
+
+axios.get('./b')
+.then(res =>{
+    if(res.code !== 200){
+        出错了上报后端
+    }
+})
+<!--
+js原生xmlhttprequest封装出一个库
+只要把XMLhttprequest监听请求完成的这个方法改掉
+无论你是success error timeout
+落脚点都是api
+
+-->
+<button id="btn"></button>
+<script>
+    const _XMLHttprequest = XMLHttpRequest;
+    window.XMLHttpRequest = function(){
+        const xhr = new _XMLHttprequest();
+        //状态码的出错 参数传错了 code：400
+        //是能够生成xhr
+        xhr.addEventListener('error',() =>{
+            console.log('xhr error')
+            //整个服务器宕机
+        })
+        xhr.addEventListener('timeout',()=>{
+            console.log('xhr timeout')
+        })
+        xhr.addEventListener('readystatechange',() =>{
+            //4就是服务器下载完毕
+            if(xhr.readyState == 4){
+                console.log(xhr.status)
+            }
+        })
+
+        return xhr;
+    }
+
+</script>
+<script src="">
+</script>
+<script>
+    
+</script>

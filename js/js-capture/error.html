@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name1:null
+        }
+        new Promise((resolove,reject) => {
+            reject('error')
+        })
+        //1.
+        try{
+            setTimeout(() => {
+                obj.name1.a=123
+            })  
+        }catch(error){
+            //发送你的服务端
+            console.log(error)
+        }
+        console.log(123);
+        console.log(456)
+        //2.意料之外的 全局捕获
+        //JS：ECMA js:词法语法语句表达式+ DOM（html元素类型 ，事件。。。。）
+        //事件模式（流）：捕获 冒泡
+        //uncaughtException
+        //unhandledRejection
+        window.addEventListener('error',function(err){
+            console.log(err)
+            //错误整理 发送到后端
+        },false)
+        //3 promise有3个状态 reject很容易被忽略
+        window.addEventListener('unhandledrejection',function(err){
+            console.log(err)
+        })
+    </script>
+</body>
+</html>
