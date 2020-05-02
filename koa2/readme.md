@@ -17,9 +17,13 @@ querystring：返回的是请求字符串
 ## POST请求的接收
 通过上下文context中的原生node.js请求对象req来获取
 获取Post请求的步骤：
-- 解析上下文ctx中的原生nodex.js对象req。
-- 将POST表单数据解析成query string-字符串.(例如:user=jspang&age=18)
-- 将字符串转换成JSON格式。
+  - 解析上下文ctx中的原生nodex.js对象req。
+  - 将POST表单数据解析成query string-字符串.(例如:user=jspang&age=18)
+  - 将字符串转换成JSON格式。
 ctx.request和ctx.req的区别
 第一个是Koa2中context经过封装的请求对象，用起来更直观和简单，第二个是context提供的node.js原生HTTP请求对象，可以获得更多的内容，适合深度编程。
 ctx.method得到请求类型，根据类型编写不同的相应的方法。
+解析Node原生POST参数
+  声明一个方法，然后用Promise对象进行解析。使用ctx.req.on来接收事件。
+POST字符串解析JSON对象
+
