@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS4 variable</title>
+    <style>
+    :root{ /*定义变量的地方 css in js 可以在某些地方替代掉stylus  */
+        --bgcolor:blue;
+        --color:red;
+
+    }
+    /* 将p标签设为可复用的 */
+    p {
+        color: var(--color);
+    }
+    div{
+        background-color: var(--bgcolor);
+        color: var(--color);
+    }
+    </style>
+</head>
+<body>
+    <p>淡黄的长裙</p>
+    <div>蓬松的头发</div>
+</body>
+</html>
