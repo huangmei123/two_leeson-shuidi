@@ -1,0 +1,24 @@
+{
+  "name": "mpa-demo",
+  "version": "1.0.0",
+  "description": "单页面应用，通俗点就是整个网站由一个html页面构成。\r 单个入口 单个html\r ## SSR\r 服务端渲染，由服务器进行渲染并返回给客户端渲染完成的html\r 服务端渲染 \r ## 同构 \r SPA+SSR\r 用户的交互：通过SPA*-router 来进行页面的导航\r 耗时耗力 \r ## MPA multiple-page-application\r 多页面应用，多个入口 多个html\r 每一个html都是天然解耦",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "babel-loader": "^8.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
