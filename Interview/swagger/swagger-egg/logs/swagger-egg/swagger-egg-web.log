@@ -1,0 +1,13 @@
+2020-05-14 10:36:44,048 INFO 7812 [egg-swagger-doc] register router: get /swagger-doc
+2020-05-14 10:36:44,517 INFO 7812 [egg-swagger-doc] register router: get /swagger-ui.html
+2020-05-14 10:36:44,518 INFO 7812 [egg-swagger-doc] register router: get /version01/controllers/selectById for controller-book-selectById 
+2020-05-14 10:36:44,730 INFO 7812 [egg-sequelize](1ms) Executed (default): SELECT 1+1 AS result
+2020-05-14 10:36:49,207 INFO 9192 [egg-swagger-doc] register router: get /swagger-doc
+2020-05-14 10:36:49,248 INFO 9192 [egg-swagger-doc] register router: get /swagger-ui.html
+2020-05-14 10:36:49,290 INFO 9192 [egg-swagger-doc] register router: get /version01/controllers/selectById for controller-book-selectById 
+2020-05-14 10:36:49,516 INFO 9192 [egg-sequelize](6ms) Executed (default): SELECT 1+1 AS result
+2020-05-14 10:36:55,327 INFO 16812 [egg-swagger-doc] register router: get /swagger-doc
+2020-05-14 10:36:55,375 INFO 16812 [egg-swagger-doc] register router: get /swagger-ui.html
+2020-05-14 10:36:55,377 INFO 16812 [egg-swagger-doc] register router: get /version01/controllers/selectById for controller-book-selectById 
+2020-05-14 10:36:55,475 INFO 16812 [egg-sequelize](1ms) Executed (default): SELECT 1+1 AS result
+2020-05-14 10:53:39,889 INFO 16812 [egg-sequelize](557ms) Executed (default): SELECT `Id`, `Name`, `Price`, `Author`, `MakeSource`, `BookCategoryId`, `Inventory`, `IsDeleted`, `IsSoldOut`, `CreatedDate`, `UpdatedDate` FROM `book` AS `book` WHERE `book`.`Id` = '6';
