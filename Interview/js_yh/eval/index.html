@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eval</title>
+</head>
+<body>
+    <script>
+    // eval 不该用
+    const xmlhttp = new XMLHttpRequest();//
+    xmlhttp.onreadystatechange = function(event){
+        // console.log(event);
+        if(xmlhttp.readyState ==4 && xmlhttp.status ==200){
+            // console.log(event.target.responseText);
+            // 怎么把ajax得到的文本变成json来到程序里面
+            //ES5以后才有的
+            // const data = JSON.parse(EVENT.target.responseText)
+            //eval 是原生的 js 。可以把字符串执行成为js
+            const data = eval(event.target.responseText);
+            console.log(data);
+
+        }
+    }
+    xmlhttp.open("GET","./post.json",true);
+    xmlhttp.send(null);
+    </script>
+</body>
+</html>
