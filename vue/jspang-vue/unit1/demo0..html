@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="student in sortStudent">
+                {{student.name}-{student.age}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var app= new Vue({
+            el:'#app',
+            data:{
+                students:[
+                {name:'jspang',age:32},
+                {name:'Panda',age:30},
+                {name:'PanPaN',age:21},
+                {name:'King',age:45}
+                ]
+            },
+            computed:{
+                sortStudent:function(){
+                    return sortByKey(this.student,'age');
+                }
+            }
+        })
+        function sortByKey(array,key){
+            return array.sort(function(a,b){
+                var x=a[key];
+                var y=b[key];
+                return ((x,y)?-1:((x>y)?1:0));
+            })
+        }
+    </script>
+</body>
+</html>
