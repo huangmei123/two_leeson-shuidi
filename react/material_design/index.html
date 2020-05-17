@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>google material_design & Flutter</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="root">
+        <!-- 波浪感觉的按钮 带来很好的交互体验 手指按下去 晕开来的感觉-->
+        <!-- <div class="xButton ripple primary circle">按钮</div> -->
+       
+    </div>
+    <!-- type="text/bable" -->
+    <script >
+        function Button(props){
+            //外面传过来的参数props
+            //props参数管家
+            let {children,type,circle,onCilck,block} =props
+            return (
+                <div
+                onCilck={onCilck}
+                className={`xButton ripple ${type} ${warning} ${circle} ${block?'block':''}`}>
+                   {children}
+                </div>
+            )
+        }
+        //封装一个组件
+        // 页面上有一个root元素 为组件写共用的组件代码
+        ReactDOM.render(
+        //挂载一个按钮，将它渲染到getElementById.
+        // Button组件
+        //是一个想把css类名变量 js交互点击 组装到一起的 名字叫Button 
+        <div>
+        <Button>default</Button> 
+        <Button type="primary" block>primary</Button>   
+        <Button type="warning">warning</Button>   
+        <Button type="warning" shape="circle" >circle</Button>   
+        <Button onCilck={()=>{alert('hahha')}} >hahha</Button>   
+        </div>
+        ,
+        document.getElementById('root'))
+    </script>
+</body>
+</html>

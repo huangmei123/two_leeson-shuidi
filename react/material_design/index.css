@@ -1,0 +1,27 @@
+.xButton {
+  box-sizing: border-box /*mobile border以内的设置都是width
+    height */;
+  display: inline-block;
+  padding: 6 1em;
+  border-radius: 4px;
+  color: #fff;
+  font-family: inherit;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer /*粘手*/;
+  user-select: none;
+}
+.ripple {
+  position: relative;
+}
+.ripple::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  background-image: radial-gradient(circle, #fff 10%, transparent 11%);
+  background-position: 50%;
+}
