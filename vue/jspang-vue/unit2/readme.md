@@ -17,3 +17,33 @@ vnode： Vue编译生成的虚拟节点
 3. update： 更新时调用 
 4. componentUpdated： 更新完成时
 5. unbind： 指令和元素解绑时
+
+## Vue.extend构造器的延伸
+扩展实例构造器 预设了部分vue实例构造器。经常用来服务于Vue.component用来生成组件 
+场景：在博客页面多处显示作者的网名 且在网名上直接由链接地址。
+在html直接写<author></author>，但是这样没有传递任何参数 只是一个静态标签。
+所以要使用Vue.extend。
+```html
+<div><author></author></div>
+```
+```js
+var authorExtend = Vue.extend({
+    template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+    data:function(){
+    return{
+          authorName:'JSPang',
+          authorUrl:'http://www.jspang.com'
+          }
+    }
+});
+```
+同时还要**挂载**
+```js
+new authorExtend().$mount('author')
+```
+还可以通过HTML标签的id或者class来生成扩展实例构造器，extend里都是一样的 只是挂载的方式不一样。
+```js
+new authorExtend().$mount('#author')
+```
+
+
