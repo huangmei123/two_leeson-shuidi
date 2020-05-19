@@ -1,0 +1,27 @@
+Arguments: 
+  E:\vccode\node\node.exe C:\Users\lenovo\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @babel/core @babel/cli
+
+PATH: 
+  E:\oracle11\product\11.2.0\dbhome_1\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;.;E:\environments\jdk-11.0.2\bin;E:\databases\mysql-8.0.15-winx64\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\shuju\110\DTS\Binn\;E:\110\Tools\Binn\;E:\shuju\110\Tools\Binn\;E:\vccode\node\;E:\Git\cmd;C:\Go\bin;E:\Mongo\bin;C:\Users\lenovo\AppData\Local\Microsoft\WindowsApps;E:\databases\mysql-8.0.15-winx64\bin;E:\vccode\Microsoft VS Code\bin;C:\Users\lenovo\AppData\Roaming\npm;C:\Users\lenovo\go\bin;E:\Mongo\bin;
+
+Yarn version: 
+  1.21.0
+
+Node version: 
+  10.16.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
