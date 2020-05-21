@@ -1,0 +1,12 @@
+{
+  "name": "electron-control",
+  "version": "1.0.0",
+  "description": "main目录是 NativeAPI\r npx create-react-app main --use-npm",
+  "main": "main/index.js",
+  "scripts": {
+    "start:main":"electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
