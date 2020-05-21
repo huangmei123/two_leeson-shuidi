@@ -1,0 +1,12 @@
+{
+  "name": "learn-eletron",
+  "version": "1.0.0",
+  "description": "electron 是js在exe的应用\r chromium(chrome开源版本 ，腾讯浏览器部门)\r electron = chromium + node（系统 fs net） 桌面应用\r 用web技术html/css/js 来做桌面应用，好处是:开发效率高\r - 跨平台 全端\r - 滴滴 内部的即时通讯\r - RN Flutter Electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
