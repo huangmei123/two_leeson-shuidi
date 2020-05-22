@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <script>
+        // ipcRenderer负责进程间调用的渲染
+        //html是运行在chorimum文件
+        var events = require('events');
+        const {ipcRenderer} = require('electron');
+        console.log(ipcRenderer instanceof events.EventEmitter,'-------')
+        //EventEmitter是node异步事件循环机制的实现
+        //ipcRenderer的send方法 node.js
+        //订阅发布者模式
+        ipcRenderer.send('greet',{
+            message:'hello main***'
+        })
+        ipcRenderer.on('greet',(event,args) =>{
+            console.log(args)
+        })
+    </script>
+</body>
+</html>
