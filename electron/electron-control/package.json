@@ -4,9 +4,13 @@
   "description": "main目录是 NativeAPI\r npx create-react-app main --use-npm",
   "main": "main/index.js",
   "scripts": {
-    "start:main":"electron ."
+    "start:main": "electron ."
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "customize-cra": "^0.9.1",
+    "react-app-rewired": "^2.1.6"
+  }
 }
