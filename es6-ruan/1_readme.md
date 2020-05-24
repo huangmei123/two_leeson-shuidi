@@ -160,3 +160,21 @@ JavaScript语言中存在一个顶层对象 ，它提供全局环境（全局作
 顶层对象在各种实现里面是不统一的。
 	- 浏览器里 顶层对象是window 但node和web worker 没有window
 	- 浏览器和web worker  ，self也指向顶层对象 
+	- Node里面 顶层对象是global 但是其他环境都不支持
+很难找到方法 在所有情况下都取到顶层对象。下面的方法勉强可以。
+// 方法一
+(typeof window !== 'undefined'
+   ? window
+   : (typeof process === 'object' &&
+      typeof require === 'function' &&
+      typeof global === 'object')
+     ? global
+     : this);
+// 方法二
+var getGlobal = function () {
+  if (typeof self !== 'undefined') { return self; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  throw new Error('unable to locate object');
+};
+ES2020 在语言标准的层面，引入dlobalThis作为顶层对象 可以在任何情况下都能从它拿到顶层对象 指向全局环境下的this
