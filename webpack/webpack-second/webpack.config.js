@@ -4,7 +4,10 @@ const isDev = process.env.NODE_ENV === 'development';
 const config = require('./public/config')[isDev ? 'dev' : 'build'];
 const {CleanWebpackPlugin} =require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+//在多个文件中要引入
+const webpack =rerequire('webpack');
+//单独打包css文件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     devtool:'cheap-module-eval-source-map',//开发环境下使用
     mode:isDev ? 'development' : 'production',
@@ -30,15 +33,23 @@ module.exports = {
         },
         rules:[
             {
-                test: /\.(png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,
+                test: /\.(le|c)ss$/,
                 use: [
-                    {
-                        loader: 'url-loader',
+                    MiniCssExtractPlugin.loader, //替换之前的 style-loader
+                    'css-loader', {
+                        loader: 'postcss-loader',
                         options: {
-                            limit: 10240, //10K
-                            esModule: false 
+                            plugins: function () {
+                                return [
+                                    require('autoprefixer')({
+                                        "overrideBrowserslist": [
+                                            "defaults"
+                                        ]
+                                    })
+                                ]
+                            }
                         }
-                    }
+                    }, 'less-loader'
                 ],
                 exclude: /node_modules/
             }
@@ -70,6 +81,22 @@ module.exports = {
                 ignore:['other.js']
             }
             //还可以继续配置其它要拷贝的文件
-        ])
+        ]),
+        new webpack.ProvidePlugin({
+            identifier1:'module1',
+            identifier2:['module2','property2']
+        }),
+        //在多个文件中引用
+        new webpack.ProvidePlugin({
+            React:'react',
+            Component:['react','Component'],
+            Vue:['vue/dist/vue.esm.js','default'],
+            $:'jquery',
+            _map:['lodash','map']
+        }),
+        //单独打包css
+        new MiniCssExtractPlugin ({
+            filename:'css/[name].css'
+        })
     ]
 }
