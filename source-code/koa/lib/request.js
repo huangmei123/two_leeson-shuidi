@@ -1,5 +1,5 @@
 let request = {} 
-let reques={
+let request={
     get url(){
         return this.req.url//
     }
