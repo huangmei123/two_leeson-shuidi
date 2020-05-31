@@ -31,3 +31,4 @@ function checkscope(){
 checkscope()();
 //都会打印 local scope
 //因为JavaScript采用的是词法作用域，作用域是在创建的时候决定的
+//但是执行的上下文栈的变化不一样。
