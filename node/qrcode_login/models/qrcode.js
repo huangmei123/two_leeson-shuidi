@@ -34,4 +34,4 @@ const QRCodeSchema = new Schema({
         type:Date
     }
 })
-// module.exports = 
+module.exports = mongoose.model('QRCode',QRCodeSchema)

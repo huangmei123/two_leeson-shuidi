@@ -24,3 +24,4 @@ JSON Web Token 是 rfc7519 出的一份标准，使用 JSON 来传递数据，�
 代码逻辑：
 1. node插入一条qrcode记录，{qrcode_id,expires_at,create_at}生成一个二维码图片
 2. 显示一个pc端的登录页 把生成的二维码显示出来。
+3. 扫码得到qrcode，使用postmon模拟登录注册的整个过程 ，
