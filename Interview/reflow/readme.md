@@ -1,0 +1,5 @@
+- 如何测试页面的性能？
+- 如何减少回流和重绘？
+- js fragment 优化了谁？
+- css calc 那么牛逼 为什么不常用？
+- classList.add 有什么优势？

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #e44a63;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="cox"></div>
+    <script>
+        // 触发几次回流
+        const ele = document.querySelector('.box')
+        // el.style.left = 100 + ele.offsetLeft + 'px';
+        // el.style.top = 100+ele.offsetLeft+'px';
+        //重绘（repaint） 重排=回流（reflow）
+        // 浏览器有一个优化机制，队列，cssText
+        // offsetLeft 布局信息，Layout读取 
+
+        const currentLeft = ele.offsetLeft;
+        currentTop = ele.offsetLeft; //restore
+        el.style.left = 100 + ele.offsetLeft + 'px';
+        el.style.top = 100+ele.offsetLeft+'px';
+    </script>
+</body>
+</html>
