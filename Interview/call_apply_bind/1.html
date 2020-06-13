@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //     "use strict"
+    //     function fucn(){
+    //         //非严格模式下 
+    //         //指向包装类
+    //         console.log(this)
+    //     }
+
+    //   //  func.call(1);//给call传递的是简单数据类型
+    //     func.call(null);//非严格模式指向window对象，严格模式下就指向null
+
+    var personLike = { //json object
+        0:'海海',
+        1:'大佬',
+        length:2 //内置属性 
+    }
+    // 给persoLike添加2个值（海哥、海泽王），他的key无所谓
+    Array.prototype.push.call(personLike,'海哥','海泽王');
+    console.log(personLike)
+    </script>
+</body>
+</html>
