@@ -1,0 +1,33 @@
+<style>
+    #btn{
+        width: 40px;
+        height: 40px;
+        background-color: red;
+    }
+</style>
+
+
+<div id="btn"></div>
+<script>
+    const btn = document.getElementById('btn');
+    //构造事件名出来
+    const e = new CustomEvent('click')
+    btn.addEventListener('touchstart',()=>{
+        console.log('touchstart')
+        //把click提前执行
+        btn.dispatchEvent(e)//执行click回调
+    })
+
+    btn.addEventListener('touchmove',()=>{
+        console.log('touchmove')
+    })
+    btn.addEventListener('touchend',(e)=>{
+        console.log('touchend')
+        //click已经被执行了 阻止浏览器执行它
+        e.preventDefault();
+    })
+    //延迟300ms
+    btn.addEventListener('click',()=>{
+        console.log('click')
+    })
+</script>
