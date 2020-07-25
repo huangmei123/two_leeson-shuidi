@@ -1,0 +1,80 @@
+<style>
+    #btn{
+        width: 40px;
+        height: 40px;
+        background-color: red;
+    }
+</style>
+<div id="btn"></div>
+<script>
+    window.addEventListener('contextmenu',e=>e.preventDefault());//禁止右键
+    const btn = document.querySelector('#btn');
+    //如何在外面设置监听事件
+    btn.addEventListener('press',()=>{
+        console.log('我收到press事件') //这个事件需要触发 在判断isPress种=中设置触发
+    })
+    //用这三个事件 判断 到底是tap？ press(500ms)？？
+    let isTap = false,isPress = false
+    let timeout = null;//制作一个定时器 用于判断是否为press
+    let startX = 0;
+    let startY = 0;
+    let startT = 0;
+    btn.addEventListener('touchstart',(event)=>{
+        //移动端多触指 pc只有一个鼠标
+        evemt = event.changedTouches[0];
+        // console.log(event)
+        startX = event.clientX,startY = event.clientY;
+
+        //起点坐标
+        isTap = true;
+        timeout = setTimeout(()=>{
+            isPress = true;
+            isTap = false;
+        },500)
+    })
+    btn.addEventListener('touchmove',(event)=>{
+        event = event.changedTouches[0];
+        let dx = event.clientX-startX,dy = event.clientY-startY;
+        //dx dy 的正负关系 滑动 判断上下左右
+        if(dx ** 2 + dy **2 > 10 **2){
+            isPan = true;
+
+            isPress =false;
+            isTap = false;
+        }
+        if(isPan){
+            console.log('ispan')
+        }
+        // isTap = true;
+        // timeout = setTimeout(()=>{
+        //     isPress = true;
+        //     isTap = false;
+        // },500)
+    })
+        //最终判断出一个事件 
+        //中间可能会进行状态转移
+        //tap--> press
+        //press-->pan
+    btn.addEventListener('touchend',(event)=>{
+        event = event.changedTouches[0];
+        const endX = event.clientx,endY = event.clientY;
+        const dis = Math.sqrt((endX -startX)  **2 +(endY-startY) **2)
+        const diffTime = Date.null() -startT;
+        const speed = distance / diffTime;
+        if(speed>2.5 && isPan){
+            console.log('flick');
+        }
+        if(isTap){
+            isTap = false
+            console.log('isTap');
+        }
+        if(isPress){
+            console.log('isPress');
+            const e =new CustomEvent('press');
+            btn.dispatchEvent(e);
+        }
+        //一直按住不放 是不会触发touchend 我们500ms的timeout就会执行
+        //点按一下 立马抬手 touchend clear（timeout）
+        clearTimeout(timeout);
+    })
+</script>
